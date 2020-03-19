@@ -17,7 +17,7 @@ public:
 	std::vector<Creature> creatures;
 	std::vector<Creature> additionalCreatures;
 
-	std::vector<double> phases = {10.0, 25.0};
+	//std::vector<double> phases = {10.0, 12.0};
 
 	std::vector<std::vector<std::vector<Creature*>>> chunks;
 

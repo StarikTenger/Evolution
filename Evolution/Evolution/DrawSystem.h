@@ -18,7 +18,7 @@ public:
 	Mouse mouse;
 	double w, h;
 	double blockSize = 1;
-	double scale = 1;
+	Vec2 scale = {1.0, 1.0};
 
 	std::deque<Parameter>* parameters;
 

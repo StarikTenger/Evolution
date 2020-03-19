@@ -54,19 +54,28 @@ void Control::step() {
 			sys.step();
 		}
 
-		drawSys.scale *= pow(1.1, mouse.delta);
+		drawSys.scale.x *= pow(1.1, mouse.delta);
+		if (keys[UP])
+			drawSys.scale.y *= 1.05;
+		if (keys[DOWN])
+			drawSys.scale.y /= 1.05;
 
 		// count parameters
 		Parameter param;
 		param.population = sys.creatures.size();
 		param.ill = 0;
+		param.damage = 0;
 		for (const auto& c : sys.creatures) {
-			if (c.virus.size())
+			if (c.virus.size()) {
 				param.ill++;
+				param.phase1 += c.virus[0].genome.phase1 / param.ill;
+				param.phase2 += c.virus[0].genome.phase2 / param.ill;
+				param.damage += c.virus[0].damage / param.ill;
+			}
 		}
-		parameters.push_back(param);
-		if (parameters.size() > 600)
-			parameters.pop_front();
+		parameters.push_front(param);
+		if (parameters.size() > 6000)
+			parameters.pop_back();
 
 		drawSys.parameters = &parameters;
 		drawSys.system = &sys;

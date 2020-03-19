@@ -12,7 +12,7 @@ using namespace std;
 
 System::System(){
 	for (int i = 0; i < 50; i++) {
-		creatures.push_back(Creature(Vec2(random::intRandom(0, 600), random::intRandom(0, 600)), random::floatRandom(0, 2 * M_PI, 3), 10));
+		creatures.push_back(Creature(Vec2(random::intRandom(0, 600), random::intRandom(0, 600)), random::floatRandom(0, 2 * M_PI, 3), 2));
 	}
 	creatures[0].virus.push_back({});
 

@@ -35,7 +35,7 @@ public:
 	std::deque<Parameter> parameters;
 
 	//time
-	int dt = 20;
+	int dt = 0;
 	int timePrev = 0;
 	bool stop = 0;
 	int iteration = 0;

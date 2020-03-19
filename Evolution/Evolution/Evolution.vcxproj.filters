@@ -85,7 +85,7 @@
       <Filter>Header Files\System</Filter>
     </ClInclude>
     <ClInclude Include="Parameter.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\System</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

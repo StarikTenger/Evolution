@@ -20,10 +20,11 @@ void System::step() {
 
 	
 
-	// moving
+	// creatures' personal actions
 	for (auto& creature : creatures) {
-		creature.timer-=dt;
+		creature.timer -= dt;
 		if (creature.timer < 0) {
+			// moving
 			creature.dir = random::floatRandom(0, 2*M_PI, 2);
 			creature.timer = random::floatRandom(0, 5, 2);
 
@@ -40,7 +41,7 @@ void System::step() {
 
 	// hp increasing
 	for (auto& creature : creatures) {
-		creature.hp += 0.02* dt;
+		creature.hp += 0.02 * dt;
 	}
 
 	fillChunks();
@@ -50,13 +51,18 @@ void System::step() {
 		bool finish = 0;
 		for (auto& virus : creature.virus) {
 			virus.progress += dt;
-			if (virus.progress > phases[0]) {
+			if (virus.progress > virus.genome.phase1) {
 				virus.timer -= dt;
 				if (virus.timer <= 0) {
 					for (Creature* victim : getNeighbors(creature.pos)) {
+						if (victim == &creature)
+							continue;
 						if (geom::distance(creature.pos, victim->pos) < virus.genome.radius && random::floatRandom(0, 1, 3) < virus.genome.chance) {
+							if (victim->virus.size() && random::floatRandom(0, 1, 2) > victim->virus[0].progress / victim->virus[0].genome.phase1) // check phase1
+								victim->virus = {};
 							if (!victim->virus.size())
-								victim->virus.push_back(Virus(virus.genome));
+								victim->virus.push_back(Virus(virus.genome.mutate()));
+
 						}
 					}
 					virus.timer = virus.genome.period;
@@ -64,7 +70,7 @@ void System::step() {
 
 				creature.hp -= virus.damage * dt;
 			}
-			if (virus.progress > phases[1])
+			if (virus.progress > virus.genome.phase1 + virus.genome.phase2)
 				finish = 1;
 		}
 		if (finish)
