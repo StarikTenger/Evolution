@@ -12,11 +12,13 @@ Genome::Genome() {
 
 Genome Genome::mutate() {
 	Genome g = *this;
-	g.radius += random::floatRandom(-1, 1, 3);
-	g.period += random::floatRandom(-0.1, 0.1, 3);
-	g.chance += random::floatRandom(-0.1, 0.1, 3);
-	g.phase1 += random::floatRandom(-2, 2, 1);
-	g.phase2 += random::floatRandom(-2, 2, 1);
+	double k = 0.1;
+
+	g.radius += random::floatRandom(-1, 1, 3) * k;
+	g.period += random::floatRandom(-0.1, 0.1, 3) * k;
+	g.chance += random::floatRandom(-0.1, 0.1, 3) * k;
+	g.phase1 += random::floatRandom(-2, 2, 1) * k;
+	g.phase2 += random::floatRandom(-2, 2, 1) * k;
 
 	g.radius = abs(g.radius);
 	g.period = abs(g.period);

@@ -25,12 +25,20 @@ void DrawSystem::drawScene() {
 
 	for (const auto& creature : sys.creatures) {
 		Color col = { 143, 235, 52 };
+		col = { 100, 100, 100 };
 		if (creature.virus.size()) {
 			col = { 255, 100, 100 };
 			if (creature.virus[0].progress < creature.virus[0].genome.phase1)
 				col = { 255, 225, 0 };
+			col = { creature.virus[0].damage * 2000, creature.virus[0].genome.phase1 * 50, 0 };
 		}
+		
+		if (creature.virus.size() && creature.virus[0].progress > creature.virus[0].genome.phase1)
+			col.b = 20;
+
 		fillCircle(creature.pos, creature.hp * 2, col);
+	
+		
 	}
 
 }
@@ -65,8 +73,8 @@ void DrawSystem::drawInterface() {
 		if(p.ill)
 			fillRect(x, 600 - v3/2, 1, v3, Color(255, 0, 0));
 
-		double t1 = p.phase1 * 1;
-		double t2 = t1 + p.phase2 * 1;
+		double t1 = p.phase1 * 0.3;
+		double t2 = t1 + p.phase2 *0.3;
 		//std::cout << p.phase1 << "\n";
 
 		if (p.ill)

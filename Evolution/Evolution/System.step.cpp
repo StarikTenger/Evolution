@@ -41,7 +41,7 @@ void System::step() {
 
 	// hp increasing
 	for (auto& creature : creatures) {
-		creature.hp += 0.02 * dt;
+		creature.hp += 0.02 * dt; // getNeighbors(creature.pos).size();
 	}
 
 	fillChunks();

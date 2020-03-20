@@ -1,4 +1,5 @@
 #pragma once
+#include "Color.h"
 
 class Genome {
 public:
