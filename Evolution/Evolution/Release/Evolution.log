@@ -1,27 +1,8 @@
-﻿  DrawSystem.cpp
+﻿  System.step.cpp
 C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\Virus.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(24,50): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(24,50): warning C4244:         with
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(24,50): warning C4244:         [
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(24,50): warning C4244:             T=float
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(24,50): warning C4244:         ]
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(24,47): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(24,47): warning C4244:         with
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(24,47): warning C4244:         [
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(24,47): warning C4244:             T=float
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(24,47): warning C4244:         ]
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(50,50): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(50,50): warning C4244:         with
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(50,50): warning C4244:         [
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(50,50): warning C4244:             T=float
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(50,50): warning C4244:         ]
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(50,47): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(50,47): warning C4244:         with
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(50,47): warning C4244:         [
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(50,47): warning C4244:             T=float
-C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\DrawSystem.cpp(50,47): warning C4244:         ]
+C:\Users\ilyin\GitHub\Evolution\Evolution\Evolution\System.step.cpp(97,20): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  1 of 963 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 1047 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

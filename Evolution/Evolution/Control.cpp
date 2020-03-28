@@ -60,6 +60,11 @@ void Control::step() {
 		if (keys[DOWN])
 			drawSys.scale.y /= 1.05;
 
+		if (keys[SPACE])
+			drawSys.mode = 1;
+		else
+			drawSys.mode = 0;
+
 		// count parameters
 		Parameter param;
 		param.population = sys.creatures.size();
@@ -73,11 +78,11 @@ void Control::step() {
 				param.damage += c.virus[0].damage / param.ill;
 			}
 		}
-		parameters.push_front(param);
-		if (parameters.size() > 6000)
-			parameters.pop_back();
+		graph.push_front(param);
+		if (graph.size() > 6000)
+			graph.pop_back();
 
-		drawSys.parameters = &parameters;
+		drawSys.graph = &graph;
 		drawSys.system = &sys;
 		drawSys.draw();
 		drawSys.window->display();

@@ -10,9 +10,47 @@ Genome::Genome() {
 	phase2 = random::floatRandom(1, 10, 1);
 }
 
+Genome::Genome(double _radius, double _period, double _chance, double _phase1, double _phase2) {
+	radius = _radius;
+	period = _period;
+	chance = _chance;
+	phase1 = _phase1;
+	phase2 = _phase2;
+}
+
+Genome operator-(const Genome& a, const Genome& b) {
+	Genome c = a;
+	c.radius -= b.radius;
+	c.period -= b.period;
+	c.chance -= b.chance;
+	c.phase1 -= b.phase1;
+	c.phase2 -= b.phase2;
+	return c;
+}
+
+Genome operator/(const Genome& a, const Genome& b) {
+	Genome c = a;
+	c.radius /= b.radius;
+	c.period /= b.period;
+	c.chance /= b.chance;
+	c.phase1 /= b.phase1;
+	c.phase2 /= b.phase2;
+	return c;
+}
+
+double Genome::distance(const Genome& a, const Genome& b) {
+	auto c = (a - b) / b;
+	return sqrt(
+		pow(c.radius, 2) +
+		pow(c.period, 2) +
+		pow(c.chance, 2) +
+		pow(c.phase1, 2) +
+		pow(c.phase2, 2));
+}
+
 Genome Genome::mutate() {
 	Genome g = *this;
-	double k = 0.1;
+	double k = 0.01;
 
 	g.radius += random::floatRandom(-1, 1, 3) * k;
 	g.period += random::floatRandom(-0.1, 0.1, 3) * k;

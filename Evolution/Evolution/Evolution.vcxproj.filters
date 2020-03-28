@@ -87,6 +87,9 @@
     <ClInclude Include="Parameter.h">
       <Filter>Header Files\System</Filter>
     </ClInclude>
+    <ClInclude Include="CreatureGenome.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -148,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="Parameter.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatureGenome.cpp">
+      <Filter>Source Files\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

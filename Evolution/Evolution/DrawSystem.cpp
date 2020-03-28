@@ -26,19 +26,24 @@ void DrawSystem::drawScene() {
 	for (const auto& creature : sys.creatures) {
 		Color col = { 143, 235, 52 };
 		col = { 100, 100, 100 };
-		if (creature.virus.size()) {
+
+		if (mode == 0 && creature.virus.size()) {
 			col = { 255, 100, 100 };
 			if (creature.virus[0].progress < creature.virus[0].genome.phase1)
 				col = { 255, 225, 0 };
 			col = { creature.virus[0].damage * 2000, creature.virus[0].genome.phase1 * 50, 0 };
 		}
+
+		if (mode == 1 && creature.immunity.size()) {
+			Virus virus = Virus(creature.immunity[0]);
+			col = { 255, 100, 100 };
+			if (creature.virus[0].progress < virus.genome.phase1)
+				col = { 255, 225, 0 };
+			col = { virus.damage * 2000, virus.genome.phase1 * 50, 0 };
+		}
 		
-		if (creature.virus.size() && creature.virus[0].progress > creature.virus[0].genome.phase1)
-			col.b = 20;
 
 		fillCircle(creature.pos, creature.hp * 2, col);
-	
-		
 	}
 
 }
@@ -52,7 +57,7 @@ void DrawSystem::drawInterface() {
 	double x = 1200;
 	double limitPopulation = 0;
 	double limitDamage = 0;
-	for (const auto& p : *parameters) {
+	for (const auto& p : *graph) {
 		x -= scale.x;
 		if (x < 600)
 			break;
@@ -60,7 +65,7 @@ void DrawSystem::drawInterface() {
 		limitDamage = std::max(limitDamage, (double)p.damage);
 	}
 	x = 1200;
-	for (const auto& p : *parameters) {
+	for (const auto& p : *graph) {
 		x -= scale.x;
 		if (x < 600)
 			break;

@@ -136,6 +136,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Control.h" />
     <ClInclude Include="Creature.h" />
+    <ClInclude Include="CreatureGenome.h" />
     <ClInclude Include="DrawSystem.h" />
     <ClInclude Include="Gamepad.h" />
     <ClInclude Include="Genome.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="Control.cpp" />
     <ClCompile Include="Control.events.cpp" />
     <ClCompile Include="Creature.cpp" />
+    <ClCompile Include="CreatureGenome.cpp" />
     <ClCompile Include="DrawSystem.basics.cpp" />
     <ClCompile Include="DrawSystem.cpp" />
     <ClCompile Include="DrawSystem.loadTextures.cpp" />

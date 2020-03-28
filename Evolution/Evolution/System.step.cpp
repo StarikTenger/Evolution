@@ -29,19 +29,20 @@ void System::step() {
 			creature.timer = random::floatRandom(0, 5, 2);
 
 			// reproducing
-			if (creature.hp > 2) {
-				creature.hp = 1;
+			if (creature.hp > creature.genome.limit) {
+				creature.hp = creature.genome.limit / 2;
+				creature.genome = creature.genome.mutate();
 				additionalCreatures.push_back(creature);
 				additionalCreatures.push_back(creature);
 				creature.hp = -1;
 			}
 		}
-		creature.pos += geom::direction(creature.dir)*creature.vel*dt;
+		creature.pos += geom::direction(creature.dir) * creature.genome.velocity*dt;
 	}
 
 	// hp increasing
 	for (auto& creature : creatures) {
-		creature.hp += 0.02 * dt; // getNeighbors(creature.pos).size();
+		creature.hp += 0.02 * dt;
 	}
 
 	fillChunks();
@@ -50,7 +51,11 @@ void System::step() {
 	for (auto& creature : creatures) {
 		bool finish = 0;
 		for (auto& virus : creature.virus) {
-			virus.progress += dt;
+			double k = 1;
+			if (creature.immunity.size() && Genome::distance(virus.genome, creature.immunity[0]) < immunityThreshold)
+				finish = 1;
+
+			virus.progress += dt * k;
 			if (virus.progress > virus.genome.phase1) {
 				virus.timer -= dt;
 				if (virus.timer <= 0) {
@@ -62,7 +67,6 @@ void System::step() {
 								victim->virus = {};
 							if (!victim->virus.size())
 								victim->virus.push_back(Virus(virus.genome.mutate()));
-
 						}
 					}
 					virus.timer = virus.genome.period;
@@ -73,8 +77,10 @@ void System::step() {
 			if (virus.progress > virus.genome.phase1 + virus.genome.phase2)
 				finish = 1;
 		}
-		if (finish)
+		if (finish) {
+			creature.immunity = { creature.virus[0].genome };
 			creature.virus = {};
+		}
 	}
 
 	

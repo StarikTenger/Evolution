@@ -11,7 +11,15 @@ public:
 	double phase2 = 5;
 
 	Genome();
+	Genome(double _radius, double _period, double _chance, double _phase1, double _phase2);
 
 	Genome mutate();
+
+	static double distance(const Genome& a, const Genome& b);
 };
+
+Genome operator-(const Genome& a, const Genome& b);
+Genome operator/(const Genome& a, const Genome& b);
+
+
 

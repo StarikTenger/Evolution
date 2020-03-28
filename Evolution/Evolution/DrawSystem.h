@@ -13,14 +13,21 @@ public:
 	Camera cam;
 	System* system;
 	bool fullscreenMode = 0;
-	DrawSystem();
-	~DrawSystem();
+	int mode = 0;
+
 	Mouse mouse;
 	double w, h;
 	double blockSize = 1;
-	Vec2 scale = {1.0, 1.0};
+	Vec2 scale = { 1.0, 1.0 };
 
-	std::deque<Parameter>* parameters;
+	std::deque<Parameter>* graph;
+
+
+
+	DrawSystem();
+	~DrawSystem();
+
+	
 
 	void draw();
 	void drawScene();
